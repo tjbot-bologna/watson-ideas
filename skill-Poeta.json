@@ -1,0 +1,172 @@
+{
+  "name": "Poeta",
+  "intents": [
+    {
+      "intent": "passero-solitario",
+      "examples": [
+        {
+          "text": "Ed erra l'armonia per questa valle."
+        },
+        {
+          "text": "Cantando vai finchè non more il giorno;"
+        },
+        {
+          "text": "D'in su la vetta della torre antica"
+        },
+        {
+          "text": "Passero solitario, alla campagna"
+        }
+      ],
+      "description": ""
+    },
+    {
+      "intent": "sabato-villaggio",
+      "examples": [
+        {
+          "text": "Col suo fascio dell'erba; e reca in mano"
+        },
+        {
+          "text": "La donzelletta vien dalla campagna"
+        },
+        {
+          "text": "In sul calar del sole"
+        },
+        {
+          "text": "Un mazzolin di rose e di viole"
+        }
+      ],
+      "description": ""
+    },
+    {
+      "intent": "info",
+      "examples": [
+        {
+          "text": "Cosa sai fare?"
+        },
+        {
+          "text": "Ciao"
+        },
+        {
+          "text": "Come ti chiami?"
+        },
+        {
+          "text": "Chi sei?"
+        }
+      ],
+      "description": ""
+    }
+  ],
+  "entities": [],
+  "language": "it",
+  "metadata": {
+    "api_version": {
+      "major_version": "v1",
+      "minor_version": "2018-09-20"
+    }
+  },
+  "description": "",
+  "dialog_nodes": [
+    {
+      "type": "standard",
+      "output": {
+        "text": {
+          "values": [
+            "Il sabato del villaggio! La felicità prima della tristezza..."
+          ],
+          "selection_policy": "sequential"
+        }
+      },
+      "parent": "node_2_1543420809487",
+      "metadata": {},
+      "conditions": "#sabato-villaggio",
+      "dialog_node": "node_4_1543421177581",
+      "previous_sibling": "node_3_1543421138406"
+    },
+    {
+      "type": "standard",
+      "output": {
+        "text": {
+          "values": [
+            "Questa poesia si chiama: Il passero solitario, solitario come Leopardi"
+          ],
+          "selection_policy": "sequential"
+        }
+      },
+      "parent": "node_2_1543420809487",
+      "metadata": {},
+      "conditions": "#passero-solitario",
+      "dialog_node": "node_3_1543421138406"
+    },
+    {
+      "type": "standard",
+      "title": "In altri casi",
+      "output": {
+        "text": {
+          "values": [
+            "Non ho capito. Puoi riformulare la frase?",
+            "Puoi ripetere usando altre parole? Non ho capito.",
+            "Non ho capito cosa mi hai detto."
+          ],
+          "selection_policy": "sequential"
+        }
+      },
+      "metadata": {},
+      "conditions": "anything_else",
+      "dialog_node": "In altri casi",
+      "previous_sibling": "node_2_1543420809487"
+    },
+    {
+      "type": "standard",
+      "title": "Leopardi",
+      "output": {
+        "text": {
+          "values": [
+            "Ah, Giacomo Leopardi!"
+          ],
+          "selection_policy": "sequential"
+        }
+      },
+      "metadata": {},
+      "next_step": {
+        "behavior": "skip_user_input"
+      },
+      "conditions": "#sabato-villaggio || #passero-solitario",
+      "dialog_node": "node_2_1543420809487",
+      "previous_sibling": "node_1_1543420536801"
+    },
+    {
+      "type": "standard",
+      "output": {
+        "text": {
+          "values": [
+            "Ciao, mi chiamo Eta, il robot Poeta!"
+          ],
+          "selection_policy": "sequential"
+        }
+      },
+      "metadata": {},
+      "conditions": "#info",
+      "dialog_node": "node_1_1543420536801",
+      "previous_sibling": "Benvenuto"
+    },
+    {
+      "type": "standard",
+      "title": "Benvenuto",
+      "output": {
+        "text": {
+          "values": [
+            "Salve. Come posso aiutarti?"
+          ],
+          "selection_policy": "sequential"
+        }
+      },
+      "metadata": {},
+      "conditions": "welcome",
+      "dialog_node": "Benvenuto"
+    }
+  ],
+  "workspace_id": "bc0cb5a5-dad4-49fe-a30a-c5a306d40990",
+  "counterexamples": [],
+  "learning_opt_out": false,
+  "status": "Available"
+}

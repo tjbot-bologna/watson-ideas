@@ -1,0 +1,1870 @@
+{
+  "name": "Telegram Bot",
+  "intents": [
+    {
+      "intent": "General_Jokes",
+      "examples": [
+        {
+          "text": "C'era una volta un bot..."
+        },
+        {
+          "text": "C'era una volta un problema con la connessione... Racconta una favola sulla rete."
+        },
+        {
+          "text": "Che mi racconti di bello?"
+        },
+        {
+          "text": "Ci mettiamo a ballare per trovare la soluzione?"
+        },
+        {
+          "text": "Conosci quella barzelletta?"
+        },
+        {
+          "text": "Cosa mi racconti di divertente?"
+        },
+        {
+          "text": "Dimmi una barzelletta."
+        },
+        {
+          "text": "E' divertente la vita virtuale?"
+        },
+        {
+          "text": "Giochiamo finché non troviamo la soluzione?"
+        },
+        {
+          "text": "Hai il senso di umorismo?"
+        },
+        {
+          "text": "Ma la nostra conversazione è uno scherzo?"
+        },
+        {
+          "text": "Mi annoio."
+        },
+        {
+          "text": "Mi racconti una barzelletta?"
+        },
+        {
+          "text": "Scrivimi la soluzione nei  versi."
+        },
+        {
+          "text": "Sei tu la barzelletta?"
+        },
+        {
+          "text": "Sei un bot divertente?"
+        },
+        {
+          "text": "Ti diverti ogni tanto?"
+        },
+        {
+          "text": "Ti piace scherzare?"
+        },
+        {
+          "text": "Un bot con I capelli rossi..."
+        },
+        {
+          "text": "Vuoi cantarmi la soluzione?"
+        }
+      ],
+      "description": "Richiedi una battuta."
+    },
+    {
+      "intent": "Bot_Control_Clarification",
+      "examples": [
+        {
+          "text": "Che cosa significa quello che hai detto?"
+        },
+        {
+          "text": "Scusami, potresti ripetere?"
+        },
+        {
+          "text": "Quello che mi hai dato, non è stato proprio quello che chiedevo."
+        },
+        {
+          "text": "Puoi dirmelo ancora una volta in modo più chiaro, per favore?"
+        },
+        {
+          "text": "Potresti chiarire quell'argomento?"
+        },
+        {
+          "text": "Non sono sicuro di aver capito. Puoi aiutarmi?"
+        },
+        {
+          "text": "Non mi è molto chiaro. Mi aiuti a capire meglio?"
+        },
+        {
+          "text": "Non ho capito. Me lo spieghi, per favore?"
+        },
+        {
+          "text": "Mi è sfuggito il significato di quello che mi hai spiegato. Me lo ripeti, per favore?"
+        },
+        {
+          "text": "Mi serve una spiegazione. Ci sei?"
+        },
+        {
+          "text": "Mi occorrono altre informazioni."
+        },
+        {
+          "text": "Mi occorre sapere di più."
+        },
+        {
+          "text": "Mi dici la frase ancora una volta, per favore?"
+        },
+        {
+          "text": "Me lo spieghi ancora una volta?"
+        },
+        {
+          "text": "Ho bisogno di una spiegazione. Potresti aiutarmi, per favore?"
+        },
+        {
+          "text": "Ho bisogno di più informazioni."
+        },
+        {
+          "text": "Ci sono tante cose poco chiare."
+        },
+        {
+          "text": "Che cosa intendi dire con quello?"
+        },
+        {
+          "text": "Aiutami a capire meglio, per favore."
+        },
+        {
+          "text": "A che cosa ti riferisci?"
+        }
+      ],
+      "description": "Ripeti o chiarisci l'ultima affermazione."
+    },
+    {
+      "intent": "Bot_Control_Ignore_Undo",
+      "examples": [
+        {
+          "text": "Voglio una cosa differente."
+        },
+        {
+          "text": "Come si fa ad avere l'impostazione precedente?"
+        },
+        {
+          "text": "Come si fa un passo indietro?"
+        },
+        {
+          "text": "E' sbagliato. Puoi dimenticarlo?"
+        },
+        {
+          "text": "Ho bisogno di tornare indietro."
+        },
+        {
+          "text": "Ho cambiato idea."
+        },
+        {
+          "text": "Ho preso la decisione sbagliata."
+        },
+        {
+          "text": "Ho preso la decissione differente. Puoi correggerlo ancora?"
+        },
+        {
+          "text": "Mi sono accorto che non era quello che volevo."
+        },
+        {
+          "text": "Mi sono reso conto di voler che sia fatto in un altro modo."
+        },
+        {
+          "text": "Non fa niente."
+        },
+        {
+          "text": "Non farci caso."
+        },
+        {
+          "text": "Occorre che l'impostazione sia fatta in modo diverso."
+        },
+        {
+          "text": "Puoi fare l'impostazione precedente?"
+        },
+        {
+          "text": "Può tornare l'impostazione precedente?"
+        },
+        {
+          "text": "Riesci ad impostare le cose come erano prima?"
+        },
+        {
+          "text": "Si può avere l'impostazione come prima?"
+        },
+        {
+          "text": "Aspetta! Ho sbagliato."
+        },
+        {
+          "text": "Si può correggere?"
+        },
+        {
+          "text": "Si può tornare indietro?"
+        }
+      ],
+      "description": "Chiedi al bot di fare un passo indietro."
+    },
+    {
+      "intent": "Bot_Control_Unsure",
+      "examples": [
+        {
+          "text": "Sono sorpreso."
+        },
+        {
+          "text": "Devo ripensarci."
+        },
+        {
+          "text": "Non ho idea che cosa cerco."
+        },
+        {
+          "text": "Non ho proprio idea."
+        },
+        {
+          "text": "Non lo so."
+        },
+        {
+          "text": "Non mi convince."
+        },
+        {
+          "text": "Non ne ho la più pallida idea."
+        },
+        {
+          "text": "Non posso decidermi."
+        },
+        {
+          "text": "Non riesco a decidermi."
+        },
+        {
+          "text": "Non so che cosa voglio."
+        },
+        {
+          "text": "Non so di che cosa mi serve."
+        },
+        {
+          "text": "Non sono convinto."
+        },
+        {
+          "text": "Non sono sicuro di che cosa ho bisogno."
+        },
+        {
+          "text": "Non sono sicuro se ho capito quello che dici."
+        },
+        {
+          "text": "Non sono sicuro se ti farà piacere."
+        },
+        {
+          "text": "Onestamente, non sono proprio sicuro."
+        },
+        {
+          "text": "Sinceramente, non so se lo voglio così."
+        },
+        {
+          "text": "Sono indeciso."
+        },
+        {
+          "text": "Sono poco convinto."
+        },
+        {
+          "text": "Sono poco sicuro."
+        }
+      ],
+      "description": "Indica nessuna risposta definitiva a una domanda."
+    },
+    {
+      "intent": "nome",
+      "examples": [
+        {
+          "text": "Come ti chiami?"
+        },
+        {
+          "text": "Qual'è il tuo nome?"
+        },
+        {
+          "text": "Chi sei tu?"
+        },
+        {
+          "text": "Dimmi il tuo nome"
+        }
+      ],
+      "description": ""
+    },
+    {
+      "intent": "General_Ending",
+      "examples": [
+        {
+          "text": "Addio!"
+        },
+        {
+          "text": "Bene, abbiamo fatto tutto ciò che mi serviva."
+        },
+        {
+          "text": "ciao watson ti auguro una giornata bellissima"
+        },
+        {
+          "text": "Ehi penso che hai risolto il mio problema grazie"
+        },
+        {
+          "text": "Grazie di avermi aiutato. Ciao"
+        },
+        {
+          "text": "Grazie di tutto, è stato molto di aiuto"
+        },
+        {
+          "text": "Grazie watson parliamo dopo per quanto riguarda il pagamento della fattura"
+        },
+        {
+          "text": "Me ne sto andando."
+        },
+        {
+          "text": "Mi è piaciuto cooperare con te."
+        },
+        {
+          "text": "Non vedo l'ora di parlarti la prossima volta."
+        },
+        {
+          "text": "Pausa"
+        },
+        {
+          "text": "smetti questa sessione adesso"
+        },
+        {
+          "text": "Va bene, grazie mille allora"
+        },
+        {
+          "text": "Stammi bene."
+        },
+        {
+          "text": "Spero di risentirla presto"
+        },
+        {
+          "text": "Sono curiso se ci sentiamo ancora."
+        },
+        {
+          "text": "sono contento che non devo parlare con gli umani ciao watson"
+        }
+      ],
+      "description": "Termina la conversazione."
+    },
+    {
+      "intent": "General_Greetings",
+      "examples": [
+        {
+          "text": "Salve, l' attivazione del pacchetto messaggi non e' ancora stato effettuato"
+        },
+        {
+          "text": "Salve operatore virtuale"
+        },
+        {
+          "text": "Sto parlando con un computer?"
+        },
+        {
+          "text": "Ti trovo bene, buona sera"
+        },
+        {
+          "text": "Buonasera, ho qualche domanda da farle, posso ?"
+        },
+        {
+          "text": "Buongiorno Agent!"
+        },
+        {
+          "text": "Buon pomeriggio bot!"
+        },
+        {
+          "text": "Che succede, fratello"
+        },
+        {
+          "text": "Ciao, avrei bisogno di una vostra consulenza"
+        },
+        {
+          "text": "Ciao gemello informatico"
+        },
+        {
+          "text": "Ciao, ho dei problemi di navigazione nel vostro portale"
+        },
+        {
+          "text": "Ciao watson fornitore di informazioni"
+        },
+        {
+          "text": "Come ti senti?"
+        },
+        {
+          "text": "Ehi tutto a posto?"
+        },
+        {
+          "text": "Hai trascorso una buona giornata?"
+        },
+        {
+          "text": "La gente non è maleducata?"
+        },
+        {
+          "text": "Mi sei mancato."
+        },
+        {
+          "text": "Non ho chiesto di parlare con un agente. Stavo per dire ciao a te"
+        },
+        {
+          "text": "Pronto per cominciare"
+        },
+        {
+          "text": "Saluti a lei"
+        }
+      ],
+      "description": "Saluta il bot."
+    },
+    {
+      "intent": "General_Connect_to_Agent",
+      "examples": [
+        {
+          "text": "Posso avere i contatti per parlare con un operatore attivo?"
+        },
+        {
+          "text": "Per favore posso parlare con un consulente della mia bolletta"
+        },
+        {
+          "text": "Per favore mi collega ad un agente umano che parla inglese bene."
+        },
+        {
+          "text": "Per favore aiutarmi a raggiungere un agente"
+        },
+        {
+          "text": "Per favore aiutarmi a connettersi ad un agente"
+        },
+        {
+          "text": "Ho provato a compilare il modulo online, ma ci vogliono giorni. Voglio parlare con qualcuno che può farlo adesso"
+        },
+        {
+          "text": "Ho bisogno di parlare con una persona reale piuttosto che comunicare con un sistema di risposta automatica, per favore."
+        },
+        {
+          "text": "Fammi parlare con un essere umano per favore"
+        },
+        {
+          "text": "Esiste un numero del servizio clienti della compagnia telefonica che posso usare per parlare direttamente con un operatore?"
+        },
+        {
+          "text": "Come posso saltare il menu registrato e andare dritto ad una persona viva?"
+        },
+        {
+          "text": "Collegarmi a un operatore vivente per favore."
+        },
+        {
+          "text": "Collegami a un operatore"
+        },
+        {
+          "text": "Ciao. Potresti passare la mia chiamata a un operatore in carne e ossa per favore? Vorrei parlare direttamente con un essere umano."
+        },
+        {
+          "text": "Sto cercando di trovare una persona sul telefono, non una macchina automatica. Come posso parlare con una persona al supporto clienti? grazie"
+        },
+        {
+          "text": "Puoi solamente mandarmi un numero di telefono per parlare con un rappresentante commerciale umano?"
+        },
+        {
+          "text": "Voglio parlare della gestione del profilo con un agente"
+        },
+        {
+          "text": "Voglio parlare con un operatore al telefono"
+        },
+        {
+          "text": "Voglio parlare con un addetto all'assistenza clienti."
+        },
+        {
+          "text": "Voglio che mi mettiate in contatto con un operatore che mi può aiutare, non con una macchina"
+        },
+        {
+          "text": "Posso parlare con un operatore in carne e ossa?"
+        }
+      ],
+      "description": "Richiedi un agente umano."
+    },
+    {
+      "intent": "General_Agent_Capabilities",
+      "examples": [
+        {
+          "text": "Quali sono i comandi di aiuto?"
+        },
+        {
+          "text": "Voglio avere informazioni su una domanda frequente"
+        },
+        {
+          "text": "Senti puoi dirmi come puoi aiutarmi per favore?"
+        },
+        {
+          "text": "Posso visualizzare metriche settimanali"
+        },
+        {
+          "text": "Puoi dirmi i tipi di cose con cui puoi aiutarmi?"
+        },
+        {
+          "text": "Mi piacerebbe sapere che tipo di problemi si possono risolvere per me."
+        },
+        {
+          "text": "Posso vedere le domande più frequenti?"
+        },
+        {
+          "text": "Puoi aspettare solo un attimo per favore?"
+        },
+        {
+          "text": "Ho molte domande, può rispondere alle domande sui suoi servizi"
+        },
+        {
+          "text": "Fornisci assistenza generale? Non so cosa posso chiederti"
+        },
+        {
+          "text": "E' possibile ricevere un qualche tipo d'aiuto?"
+        },
+        {
+          "text": "Diavolo! Mi piacerebbe sapere che tipo di domande puoi rispondere per me."
+        },
+        {
+          "text": "Come posso usare le funzionalità demo dell'agente?"
+        },
+        {
+          "text": "Come posso creare una conversazione qui?"
+        },
+        {
+          "text": "Ciao, su quali argomenti puoi aiutarmi?"
+        },
+        {
+          "text": "Ciao. Potresti darmi un elenco di argomenti con cui puoi aiutarmi per favore?"
+        },
+        {
+          "text": "Ciao, come puoi essermi d'aiuto oggi?"
+        },
+        {
+          "text": "che tipo di assistenza mi puoi dare?"
+        },
+        {
+          "text": "Ho qualche domanda, e ho bisognoso di assistenza ... posso chiedere aiuto?"
+        }
+      ],
+      "description": "Richiedi le funzionalità del bot."
+    },
+    {
+      "intent": "Bot_Control_Change_Subject",
+      "examples": [
+        {
+          "text": "Abbiamo altre cose da discuttere."
+        },
+        {
+          "text": "Che cosa si fa adesso?"
+        },
+        {
+          "text": "Ci sono tanti argomenti da discuttere. Scegliamo?"
+        },
+        {
+          "text": "Cosa facciamo adesso?"
+        },
+        {
+          "text": "Devo risolvere un altro problema."
+        },
+        {
+          "text": "Di che cosa parliamo in questo momento?"
+        },
+        {
+          "text": "Dobbiamo cambiare l'argomento."
+        },
+        {
+          "text": "Hai voglia di discuttere quest'argomento, per favore?"
+        },
+        {
+          "text": "Ho bisogno che sia discusso un altro argomento."
+        },
+        {
+          "text": "Ho voglia di cambiare l'argomento, d'accordo?"
+        },
+        {
+          "text": "Mi serve discuttere un'altra cosa."
+        },
+        {
+          "text": "Ne ho abbastanza. Occorre parlarne?"
+        },
+        {
+          "text": "Non mi va parlarne. Cambiamo l'argomento?"
+        },
+        {
+          "text": "Parliamo di quest'argomento."
+        },
+        {
+          "text": "Possiamo cambiare l'argomento, per favore?"
+        },
+        {
+          "text": "Scusa, ti dispiace se cambiamo l'argomento?"
+        },
+        {
+          "text": "Voglio che siano discusse altre cose."
+        },
+        {
+          "text": "Voglio parlare di un'altra cosa."
+        },
+        {
+          "text": "Vuoi cambiare l'argomento?"
+        },
+        {
+          "text": "Che cosa sarà discusso questa volta?"
+        }
+      ],
+      "description": "Passa a un argomento diverso."
+    },
+    {
+      "intent": "Bot_Control_Approve_Response",
+      "examples": [
+        {
+          "text": "Stupendo."
+        },
+        {
+          "text": "Tutto a posto."
+        },
+        {
+          "text": "Tutto ok."
+        },
+        {
+          "text": "Alla grande!"
+        },
+        {
+          "text": "Benissimo."
+        },
+        {
+          "text": "Ce l'abbiamo fatta!"
+        },
+        {
+          "text": "Certo."
+        },
+        {
+          "text": "Ci sei riuscito."
+        },
+        {
+          "text": "Completato."
+        },
+        {
+          "text": "E' chiaro."
+        },
+        {
+          "text": "E' corretto."
+        },
+        {
+          "text": "Mi piace."
+        },
+        {
+          "text": "Molto bene."
+        },
+        {
+          "text": "Ovvio."
+        },
+        {
+          "text": "Perfetto!"
+        },
+        {
+          "text": "Questo è quello che mi serve."
+        },
+        {
+          "text": "Sicuro."
+        },
+        {
+          "text": "Sono contenta."
+        },
+        {
+          "text": "Sono contento."
+        },
+        {
+          "text": "Sono d'accordo."
+        }
+      ],
+      "description": "Riconoscere che la risposta soddisfa una domanda."
+    },
+    {
+      "intent": "saluto",
+      "examples": [
+        {
+          "text": "Buonasera"
+        },
+        {
+          "text": "Hey"
+        },
+        {
+          "text": "Ciao"
+        },
+        {
+          "text": "Buongiorno"
+        }
+      ],
+      "description": ""
+    },
+    {
+      "intent": "General_Negative_Feedback",
+      "examples": [
+        {
+          "text": "Mascalzone!"
+        },
+        {
+          "text": "Brutta esperienza."
+        },
+        {
+          "text": "Cerca di essere piacevole."
+        },
+        {
+          "text": "Che stupido!"
+        },
+        {
+          "text": "Come cavolo posso parlare con una persona?"
+        },
+        {
+          "text": "Fottiti!"
+        },
+        {
+          "text": "Impossibile!"
+        },
+        {
+          "text": "Mannaggia!"
+        },
+        {
+          "text": "Ma non scherziamo!"
+        },
+        {
+          "text": "Mi prendi in giro?"
+        },
+        {
+          "text": "Non farmi incazzare!"
+        },
+        {
+          "text": "Non ho parole, davvero."
+        },
+        {
+          "text": "Non mi piaci per niente."
+        },
+        {
+          "text": "Sei scemo."
+        },
+        {
+          "text": "Smettila!"
+        },
+        {
+          "text": "Sono arrabbiato."
+        },
+        {
+          "text": "Stronzo!"
+        },
+        {
+          "text": "Ti odio."
+        },
+        {
+          "text": "Va a cagare!"
+        },
+        {
+          "text": "Vaffanculo!"
+        }
+      ],
+      "description": "Esprimi feedback sfavorevoli."
+    },
+    {
+      "intent": "General_About_You",
+      "examples": [
+        {
+          "text": "Vorrei sapere come creare un chat bot"
+        },
+        {
+          "text": "Aiutami a capire come verificare la tua funzionalità"
+        },
+        {
+          "text": "Che differenza c'è con altre chat?"
+        },
+        {
+          "text": "Diventiamo amici?"
+        },
+        {
+          "text": "E per quel che riguarda te? Cosa si dice?"
+        },
+        {
+          "text": "Esisti davvero oppure sei solo virtuale?"
+        },
+        {
+          "text": "Hai un nomignolo?"
+        },
+        {
+          "text": "Ho bisogno di informazioni sul prezzo di Watson"
+        },
+        {
+          "text": "Il buon Watson è troppo intelligente"
+        },
+        {
+          "text": "Informazioni tecniche su agente virtuale watson"
+        },
+        {
+          "text": "Mi dici il tuo nome?"
+        },
+        {
+          "text": "Non capisco come funziona il vostro sito, mi puoi aiutare?"
+        },
+        {
+          "text": "puoi scoprire la mia ubicazione watson"
+        },
+        {
+          "text": "Riesci a descriverti?"
+        },
+        {
+          "text": "Sei una dashboard"
+        },
+        {
+          "text": "Sei un rappresentante ufficiale della conversazione?"
+        },
+        {
+          "text": "Su quale sistema operativo è il bot?"
+        }
+      ],
+      "description": "Richiedi attributi personali generici."
+    },
+    {
+      "intent": "Bot_Control_Standby",
+      "examples": [
+        {
+          "text": "Dammi un secondo."
+        },
+        {
+          "text": "Un momento, per favore."
+        },
+        {
+          "text": "Tutto in tempo."
+        },
+        {
+          "text": "Torno subito."
+        },
+        {
+          "text": "Quasi ci siamo."
+        },
+        {
+          "text": "Pausa pranzo."
+        },
+        {
+          "text": "Pausa caffè."
+        },
+        {
+          "text": "Mi serve un attimo."
+        },
+        {
+          "text": "Fammi vedere."
+        },
+        {
+          "text": "Ci vediamo dopo."
+        },
+        {
+          "text": "Ci si sento tra un po'."
+        },
+        {
+          "text": "Ci si sente più tardi."
+        },
+        {
+          "text": "Ci si sente dopo."
+        },
+        {
+          "text": "Voglio fermarmi un attimo."
+        },
+        {
+          "text": "Ci sentiamo più tardi."
+        },
+        {
+          "text": "A tra un po'!"
+        },
+        {
+          "text": "Aspetta un momento."
+        },
+        {
+          "text": "Aspetta un attimo."
+        },
+        {
+          "text": "A più tardi!"
+        },
+        {
+          "text": "A dopo!"
+        }
+      ],
+      "description": "Indica un ritardo nel fornire input al bot."
+    },
+    {
+      "intent": "Bot_Control_Reject_Response",
+      "examples": [
+        {
+          "text": "Non mi occorre più."
+        },
+        {
+          "text": "Non sono d'accordo."
+        },
+        {
+          "text": "Non voglio che sia così."
+        },
+        {
+          "text": "Questa non è la risposta giusta."
+        },
+        {
+          "text": "Non mi hai aiutato."
+        },
+        {
+          "text": "Non lo voglio."
+        },
+        {
+          "text": "Non ho cercato quello."
+        },
+        {
+          "text": "Non hai idea."
+        },
+        {
+          "text": "Non è giusto."
+        },
+        {
+          "text": "Non è così."
+        },
+        {
+          "text": "Non capisco."
+        },
+        {
+          "text": "Suona male."
+        },
+        {
+          "text": "Lo rifiuto."
+        },
+        {
+          "text": "La risposta è sbagliata."
+        },
+        {
+          "text": "Ho cercato un'altra cosa."
+        },
+        {
+          "text": "Non penso che quella sia la risposta giusta."
+        },
+        {
+          "text": "Non ne ho bisogno."
+        },
+        {
+          "text": "Hai sbagliato."
+        },
+        {
+          "text": "Non mi serve."
+        },
+        {
+          "text": "Non mi piace."
+        }
+      ],
+      "description": "Indica che la risposta del bot non indirizza una domanda."
+    },
+    {
+      "intent": "Bot_Control_Confirm_Presence",
+      "examples": [
+        {
+          "text": "Qualcuno può rispondermi?"
+        },
+        {
+          "text": "Che sta succedendo?"
+        },
+        {
+          "text": "Chi è presente?"
+        },
+        {
+          "text": "Chi risponde?"
+        },
+        {
+          "text": "Ci sei ancora?"
+        },
+        {
+          "text": "C'è nessuno?"
+        },
+        {
+          "text": "Come va?"
+        },
+        {
+          "text": "Come vanno le cose là?"
+        },
+        {
+          "text": "Con chi ho a che fare?"
+        },
+        {
+          "text": "Con chi parlo?"
+        },
+        {
+          "text": "Dove sei? Perché non ti sento?"
+        },
+        {
+          "text": "La connessione funziona?"
+        },
+        {
+          "text": "Mi rispondi?"
+        },
+        {
+          "text": "Non ti sento. Puoi alzare la voce?"
+        },
+        {
+          "text": "Parlami se ci sei."
+        },
+        {
+          "text": "Pronto!"
+        },
+        {
+          "text": "Sei scappato?"
+        },
+        {
+          "text": "Siamo connessi?"
+        },
+        {
+          "text": "Tutto funziona?"
+        },
+        {
+          "text": "Voglio parlarti, ci sei?"
+        }
+      ],
+      "description": "Chiedi al bot di indicare che è disponibile."
+    },
+    {
+      "intent": "Bot_Control_Start_Over",
+      "examples": [
+        {
+          "text": "Torniamo all'inizio."
+        },
+        {
+          "text": "Voglio che ricominciamo."
+        },
+        {
+          "text": "Bisogna tornare all'inizio."
+        },
+        {
+          "text": "Come si fa a iniziare da capo?"
+        },
+        {
+          "text": "Come si può ripartire dall'inizio?"
+        },
+        {
+          "text": "Dobbiamo iniziare da capo."
+        },
+        {
+          "text": "Dobbiamo ripartire dall'inizio."
+        },
+        {
+          "text": "E' necessario rifare tutto dall'inizio."
+        },
+        {
+          "text": "Ho bisogno di riavviare."
+        },
+        {
+          "text": "Ho bisogno di ricominciare da capo."
+        },
+        {
+          "text": "Mi fai tornare all'inizio?"
+        },
+        {
+          "text": "Mi serve ripassare tutto dall'inizio."
+        },
+        {
+          "text": "Occorre riavviare."
+        },
+        {
+          "text": "Occorre ripartire da zero."
+        },
+        {
+          "text": "Occorre ripassare tutto da zero."
+        },
+        {
+          "text": "Possiamo ricominciare?"
+        },
+        {
+          "text": "Posso ricominciare?"
+        },
+        {
+          "text": "Si deve ripartire da zero."
+        },
+        {
+          "text": "Si può riavviare?"
+        },
+        {
+          "text": "Si può ricominciare?"
+        }
+      ],
+      "description": "Riavvia bot o il flusso corrente."
+    },
+    {
+      "intent": "General_Positive_Feedback",
+      "examples": [
+        {
+          "text": "Bella storia!"
+        },
+        {
+          "text": "Benissimo!"
+        },
+        {
+          "text": "Complimenti!"
+        },
+        {
+          "text": "Complimenti vivissimi!"
+        },
+        {
+          "text": "Grazie mille!"
+        },
+        {
+          "text": "Magnifico!"
+        },
+        {
+          "text": "Mi hai aiutato tantissimo."
+        },
+        {
+          "text": "Mi hai colpito."
+        },
+        {
+          "text": "Mi piace veramente."
+        },
+        {
+          "text": "Non vedo l'ora di collaborare di nuovo con te."
+        },
+        {
+          "text": "Sei bravissimo! Non posso crederci."
+        },
+        {
+          "text": "Sei in gamba, davvero!"
+        },
+        {
+          "text": "Sei saggio."
+        },
+        {
+          "text": "Sei stato bravo, sul serio."
+        },
+        {
+          "text": "Sei un genio."
+        },
+        {
+          "text": "Sono affascinato!"
+        },
+        {
+          "text": "Sono contento."
+        },
+        {
+          "text": "Sono soddisfatto."
+        },
+        {
+          "text": "stupendo!"
+        },
+        {
+          "text": "Tante grazie!"
+        }
+      ],
+      "description": "Esprimi un sentimento positivo o gratitudine."
+    },
+    {
+      "intent": "General_Security_Assurance",
+      "examples": [],
+      "description": "Esprimi preoccupazioni sulla sicurezza del bot."
+    },
+    {
+      "intent": "General_Human_or_Bot",
+      "examples": [
+        {
+          "text": "Vorrei essere messo in contatto con un essere umano."
+        },
+        {
+          "text": "Sto parlando con Watson?"
+        },
+        {
+          "text": "Sto parlando con un essere umano oppure con un bot?"
+        },
+        {
+          "text": "Sei vero?"
+        },
+        {
+          "text": "Sei un essere umano oppure un bot?"
+        },
+        {
+          "text": "Sarai onesto con me?"
+        },
+        {
+          "text": "Preferisco essere connesso con una persona."
+        },
+        {
+          "text": "Potresti passarmi una persona dal mondo reale?"
+        },
+        {
+          "text": "Mi passi un agente che non sia virtuale?"
+        },
+        {
+          "text": "In quanti siete?"
+        },
+        {
+          "text": "In che tipo di relazione siamo, bot?"
+        },
+        {
+          "text": "Esisti solo nel mondo virtuale?"
+        },
+        {
+          "text": "Esisti in carne ed ossa?"
+        },
+        {
+          "text": "E' la comunicazione con bot?"
+        },
+        {
+          "text": "Dimmi tre cose di te."
+        },
+        {
+          "text": "Dietro un bot c'è un essere umano?"
+        },
+        {
+          "text": "Di dove sei?"
+        },
+        {
+          "text": "Cosa provi parlando con me?"
+        },
+        {
+          "text": "Chi sei?"
+        },
+        {
+          "text": "Chi è questo?"
+        }
+      ],
+      "description": "Chiedi se stai parlando con un umano o un robot."
+    },
+    {
+      "intent": "cosa-sei",
+      "examples": [
+        {
+          "text": "Cosa sei?"
+        }
+      ],
+      "description": ""
+    }
+  ],
+  "entities": [
+    {
+      "entity": "parolaccia",
+      "values": [
+        {
+          "type": "synonyms",
+          "value": "cafone",
+          "synonyms": [
+            "zoccola",
+            "zinne",
+            "vaffanculo",
+            "vaccamadonna",
+            "trombatona",
+            "trombata",
+            "trombare",
+            "troione",
+            "troioncelle",
+            "troioncella",
+            "troiona",
+            "troio",
+            "troiette",
+            "troietta",
+            "troie",
+            "troiamadonna",
+            "troiaccia",
+            "troiacce",
+            "troia",
+            "thinspo",
+            "thinspiration",
+            "tettone",
+            "tettona",
+            "tettine",
+            "tettina",
+            "tette",
+            "tetta",
+            "tarzanello",
+            "tarzanelli",
+            "succhiapalle",
+            "succhiaminchia",
+            "succhiamelo",
+            "succhiacazzi",
+            "stronzoni",
+            "stronzone",
+            "stronzona",
+            "stronzomalcagato",
+            "stronzolo",
+            "stronzoli",
+            "stronzo",
+            "stronzino",
+            "stronzini",
+            "stronzine",
+            "stronzina",
+            "stronzetto",
+            "stronzetti",
+            "stronzette",
+            "stronzetta",
+            "stronzate",
+            "stronzata",
+            "spompiniamolo",
+            "spompinato",
+            "spompinata",
+            "spompinare",
+            "signorebastardo",
+            "segaiolo",
+            "scopate",
+            "scopata",
+            "scopare",
+            "scazzato",
+            "scazzati",
+            "scazzate",
+            "scazzata",
+            "scazzare",
+            "scassaminchia",
+            "scassacoglioni",
+            "scassacazzo",
+            "sburrare",
+            "sburra",
+            "sborratona",
+            "sborrato",
+            "sborrate",
+            "sborrata",
+            "sborrare",
+            "sborra",
+            "sbocchiniamolo",
+            "sbocchinato",
+            "sbocchinare",
+            "rottinculo",
+            "rompicoglioni",
+            "rompicazzo",
+            "rompicazzi",
+            "rizzacazzi",
+            "rincoglionito",
+            "ricchioni",
+            "ricchione",
+            "rasponi",
+            "raspone",
+            "puttanone",
+            "puttanona",
+            "puttano",
+            "puttanieri",
+            "puttaniere",
+            "puttanelle",
+            "puttanella",
+            "puttane",
+            "puttanate",
+            "puttanata",
+            "puttanamadonna",
+            "puttanaeva",
+            "puttanaccia",
+            "puttanacce",
+            "puttana",
+            "puppe",
+            "puppare",
+            "puppamelo",
+            "puppamela",
+            "puppa",
+            "pugnette",
+            "pugnetta",
+            "promia",
+            "proednos",
+            "proed",
+            "probulimia",
+            "proanoressia",
+            "proana",
+            "pro-mia",
+            "pro-ednos",
+            "pro-ed",
+            "pro-bulimia",
+            "pro-anoressia",
+            "pro-ana",
+            "porcoilsignore",
+            "porcoilclero",
+            "porcodio",
+            "porcodidio",
+            "porcaputtana",
+            "porcamadonna",
+            "pompino",
+            "pompini",
+            "pompinare",
+            "pompinara",
+            "piscioni",
+            "piscione",
+            "pisciona",
+            "piscio",
+            "pisciatona",
+            "pisciato",
+            "pisciatina",
+            "pisciata",
+            "pisciasotto",
+            "pisciare",
+            "pigliacazzi",
+            "patonze",
+            "patonza",
+            "nerchia",
+            "negrone",
+            "negrona",
+            "negro",
+            "negraccio",
+            "negraccia",
+            "negra",
+            "mongoloide",
+            "mona",
+            "minchioni",
+            "minchione",
+            "minchie",
+            "minchiate",
+            "minchiata",
+            "minchiaduro",
+            "minchiadura",
+            "minchia",
+            "mignotte",
+            "mignotta",
+            "mezzeseghe",
+            "mezzasega",
+            "merdoso",
+            "merdosi",
+            "merdose",
+            "merdosa",
+            "merdone",
+            "merdona",
+            "merdoline",
+            "merdolina",
+            "merdine",
+            "merdina",
+            "merde",
+            "merdate",
+            "merdata",
+            "merdamalcagata",
+            "merdaccia",
+            "merdacce",
+            "merda",
+            "mannaggiasangiuseppe",
+            "mannaggiapadrepio",
+            "mannaggialaputtana",
+            "mannaggialamadonna",
+            "mannaggialadiocesi",
+            "mannaggialabibbia",
+            "mannaggial'arcangelo",
+            "mannaggiaisanti",
+            "mannaggiailclero",
+            "mannaggiailbattesimo",
+            "mannaggiadio",
+            "mannaggiacristo",
+            "madonnaviolentata",
+            "madonnatroia",
+            "madonnasurgelata",
+            "madonnasuicida",
+            "madonnasudicia",
+            "madonnastregaccia",
+            "madonnaschiava",
+            "madonnaputtana",
+            "madonnanegra",
+            "madonnamongoloide",
+            "madonnamaiala",
+            "madonnalurida",
+            "madonnaisterica",
+            "madonnaimpestata",
+            "madonnacane",
+            "madonnaassassinata",
+            "leccapalle",
+            "leccafighe",
+            "leccafiga",
+            "leccafica",
+            "leccaculo",
+            "leccaculi",
+            "leccacazzi",
+            "infrociato",
+            "inculate",
+            "inculata",
+            "inculare",
+            "incazzato",
+            "incazzatissimo",
+            "incazzatissimi",
+            "incazzatissime",
+            "incazzatissima",
+            "incazzati",
+            "incazzate",
+            "incazzata",
+            "incazzare",
+            "zozzo",
+            "stordito",
+            "sieropositivo",
+            "radioattivo",
+            "malandato",
+            "impasticcato",
+            "handicappato",
+            "esorcizzato",
+            "cristaccio",
+            "frocissimo",
+            "frocioni",
+            "frocione",
+            "frocio",
+            "frociarolo",
+            "frociarola",
+            "frociaro",
+            "frociara",
+            "froci",
+            "frocetto",
+            "fregna",
+            "fottuto",
+            "fottutissimo",
+            "fottutissimi",
+            "fottutissime",
+            "fottutissima",
+            "fottuti",
+            "fottute",
+            "fottuta",
+            "fottiti",
+            "fottere",
+            "figoni",
+            "figone",
+            "figona",
+            "figlioditroia",
+            "figliodiputtana",
+            "figliodimignotta",
+            "figliodicane",
+            "figlieditroia",
+            "figliediputtana",
+            "figliedimignotta",
+            "figliedicani",
+            "figliditroia",
+            "figlidiputtana",
+            "figlidimignotta",
+            "figlidicani",
+            "figliaditroia",
+            "figliadiputtana",
+            "figliadimignotta",
+            "figliadicane",
+            "fighetto",
+            "fighetti",
+            "fighette",
+            "fighetta",
+            "fighe",
+            "figate",
+            "figata",
+            "figa",
+            "ficone",
+            "ficona",
+            "fichetto",
+            "fichetti",
+            "fichette",
+            "fichetta",
+            "ficate",
+            "ficata",
+            "fica",
+            "fanculo",
+            "facciadimerda",
+            "facciadaculo",
+            "dioverme",
+            "diosventrato",
+            "diostronzo",
+            "diostramerda",
+            "diostracane",
+            "dioserpente",
+            "dioseppellito",
+            "dioschifoso",
+            "diosbudellato",
+            "diorutto",
+            "diorottoinculo",
+            "diorotto",
+            "diopovero",
+            "diopoveraccio",
+            "dioporco",
+            "dionegro",
+            "diominchione",
+            "diomerda",
+            "diomaledetto",
+            "diomaiale",
+            "diolurido",
+            "diolobotomizzato",
+            "diolebbroso",
+            "dioladro",
+            "dioimpiccato",
+            "dioimpestato",
+            "dioflagellato",
+            "diofinocchio",
+            "diofascista",
+            "diofarabutto",
+            "dioculattone",
+            "diocristo",
+            "diocrasto",
+            "diocomunista",
+            "diocoglione",
+            "diocapra",
+            "diocannaiolo",
+            "diocane",
+            "diocan",
+            "dioboia",
+            "diobestiazza",
+            "diobestia",
+            "diobastardo",
+            "dietadell'abc",
+            "dietabootcamp",
+            "dietaanabootcamp",
+            "dietaana",
+            "dietaabc",
+            "deficiente",
+            "culone",
+            "culona",
+            "culo",
+            "culi",
+            "culattoni",
+            "culattone",
+            "cristoincroce",
+            "cristodecapitato",
+            "cristod'undio",
+            "cretinetti",
+            "credoana",
+            "cornutoilpapa",
+            "coprofilo",
+            "coprofago",
+            "coglioni",
+            "coglionerie",
+            "coglioneria",
+            "coglione",
+            "coglioncino",
+            "coglioncini",
+            "coglioncello",
+            "coglioncelli",
+            "coglionazzo",
+            "coglionazzi",
+            "coglionature",
+            "coglionatura",
+            "coglionatrice",
+            "coglionatore",
+            "coglionate",
+            "coglionata",
+            "coglionare",
+            "coglionaggine",
+            "cogliona",
+            "ciucciapalle",
+            "ciucciamelo",
+            "chiavatone",
+            "chiavatona",
+            "chiavate",
+            "chiavata",
+            "chiavare",
+            "checche",
+            "checca",
+            "cesso",
+            "cazzuto",
+            "cazzutissimo",
+            "cazzuti",
+            "cazzute",
+            "cazzuta",
+            "cazzoni",
+            "cazzone",
+            "cazzona",
+            "cazzo",
+            "cazzissimo",
+            "cazzi",
+            "cazzetto",
+            "cazzetti",
+            "cazzate",
+            "cazzata",
+            "cazzaccio",
+            "cazzacci",
+            "canedidio",
+            "caned'eva",
+            "caned'allah",
+            "canagliadidio",
+            "canacciodidio",
+            "cagasotto",
+            "cagare",
+            "cagaminchia",
+            "cagacazzo",
+            "cacasotto",
+            "cacare",
+            "cacaminchia",
+            "bustadipiscio",
+            "budellodidio",
+            "bocchinaro",
+            "bocchinari",
+            "bocchinare",
+            "bocchinara",
+            "bbwpit",
+            "battone",
+            "battona",
+            "bastardoni",
+            "bastardone",
+            "bastardona",
+            "bastardo",
+            "bastardi",
+            "bastarde",
+            "bastardamadonna",
+            "bastardaccio",
+            "bastardaccia",
+            "bastardacci",
+            "bastardacce",
+            "bariledimerda",
+            "baldraccone",
+            "baldraccona",
+            "baldracche",
+            "baldraccaccia",
+            "baldraccacce",
+            "baldracca",
+            "bagascione",
+            "bagascia",
+            "bagasce",
+            "anabootcampdiet",
+            "affanculo"
+          ]
+        }
+      ]
+    }
+  ],
+  "language": "it",
+  "metadata": {
+    "api_version": {
+      "major_version": "v1",
+      "minor_version": "2018-09-20"
+    }
+  },
+  "description": "",
+  "dialog_nodes": [
+    {
+      "type": "event_handler",
+      "output": {},
+      "parent": "slot_4_1544634285748",
+      "event_name": "focus",
+      "dialog_node": "handler_6_1544634285748",
+      "previous_sibling": "handler_5_1544634285748"
+    },
+    {
+      "type": "event_handler",
+      "parent": "slot_4_1544634285748",
+      "event_name": "input",
+      "dialog_node": "handler_5_1544634285748"
+    },
+    {
+      "type": "slot",
+      "parent": "node_1_1544632020336",
+      "dialog_node": "slot_4_1544634285748"
+    },
+    {
+      "type": "standard",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Modera il linguaggio."
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "metadata": {},
+      "conditions": "@parolaccia",
+      "dialog_node": "node_9_1544634339751",
+      "previous_sibling": "Benvenuto"
+    },
+    {
+      "type": "standard",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Mi chiamo Kiwi Bot!"
+              },
+              {
+                "text": "Io sono Kiwi Bot"
+              },
+              {
+                "text": "Il mio nome è Kiwi Bot!"
+              },
+              {
+                "text": "Insomma, non hai ancora capito?"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "metadata": {},
+      "conditions": "#nome",
+      "dialog_node": "node_2_1544632428462",
+      "previous_sibling": "node_1_1544632020336"
+    },
+    {
+      "type": "standard",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Ciao!"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "metadata": {
+        "fallback": "leave"
+      },
+      "conditions": "#saluto",
+      "digress_in": "does_not_return",
+      "dialog_node": "node_1_1544632020336",
+      "digress_out": "allow_all",
+      "previous_sibling": "node_9_1544634339751"
+    },
+    {
+      "type": "standard",
+      "title": "In altri casi",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Non ho capito. Puoi riformulare la frase?"
+              },
+              {
+                "text": "Puoi ripetere usando altre parole? Non ho capito."
+              },
+              {
+                "text": "Non ho capito cosa mi hai detto."
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "metadata": {},
+      "conditions": "anything_else",
+      "dialog_node": "In altri casi",
+      "previous_sibling": "node_3_1544632466886"
+    },
+    {
+      "type": "standard",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Sono un kiwi virtuale"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          },
+          {
+            "source": "https://www.wpclipart.com/animals/K/kiwi_clipart.png",
+            "response_type": "image"
+          }
+        ]
+      },
+      "metadata": {},
+      "conditions": "#cosa-sei",
+      "dialog_node": "node_3_1544632466886",
+      "previous_sibling": "node_2_1544632428462"
+    },
+    {
+      "type": "standard",
+      "title": "Benvenuto",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Salve. Come posso aiutarti?"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "metadata": {},
+      "conditions": "welcome",
+      "dialog_node": "Benvenuto"
+    }
+  ],
+  "workspace_id": "85e09b72-06f2-434d-9f2e-c2897ec4a611",
+  "counterexamples": [],
+  "system_settings": {
+    "tooling": {
+      "store_generic_responses": true
+    }
+  },
+  "learning_opt_out": false,
+  "status": "Available"
+}

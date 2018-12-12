@@ -16,8 +16,7 @@ from watson_developer_cloud import AssistantV1
 context = None
 
 assistant = AssistantV1(
-    username="e7c46313-e382-40f4-a77c-67f9e5cc15ea",
-    password="1XaNGI6RwkOM",
+    iam_apikey="esXISM3aWlgM5HORbmxtKnQnG6_I-fTM3wFa2rLHYBL9",
     ## url is optional, and defaults to the URL below. Use the correct URL for your region.
     url="https://gateway.watsonplatform.net/assistant/api",
     version="2018-07-10")
@@ -48,7 +47,7 @@ def converse(bot):
             # Reply to the message
 
             response = assistant.message(
-                workspace_id="4208099e-d443-405d-bba7-11c3d9f2c620",
+                workspace_id="85e09b72-06f2-434d-9f2e-c2897ec4a611",
                 input={
                     "text": update.message.text
                 },

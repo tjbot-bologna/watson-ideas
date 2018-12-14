@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 
 from time import sleep
+import os
 
 # Import Telegram libraries
 import logging
@@ -12,8 +13,7 @@ import json
 from watson_developer_cloud import AssistantV1
 from watson_developer_cloud import VisualRecognitionV3
 from watson_developer_cloud import SpeechToTextV1
-from os.path import join, dirname
-
+from watson_developer_cloud import LanguageTranslatorV3
 
 # Define global variables
 update_id = None
@@ -31,6 +31,15 @@ assistant = AssistantV1(
 visual_recognition = VisualRecognitionV3(
     "2018-03-19",
     iam_apikey="UDDvweJSDR32NAZIfyxZ-dlvjIZ8dfRv75Z93xyjWGEX")
+
+speech_to_text = SpeechToTextV1(
+    iam_apikey="V8tmwaVMQteiGjuE6N2colYvu__DxTAso_tms2yqxw9o",
+    url="https://gateway-lon.watsonplatform.net/speech-to-text/api")
+
+language_translator = LanguageTranslatorV3(
+version="2018-05-01",
+iam_apikey="aWORISQg1cm1P6bkcm_YraJEIo9r-mBl1hnVrSiamcN-",
+url="https://gateway.watsonplatform.net/language-translator/api")
 
 
 # Watson assistant service function
@@ -56,6 +65,41 @@ def vrec(pic_file):
             threshold='0.6').get_result()
         print(json.dumps(classes, indent=2))
         return classes
+
+
+# Speech to text service function
+def stt(audio):
+    with open(audio, 'rb') as audio_file:
+        speech_recognition_results = speech_to_text.recognize(
+            audio=audio_file,
+            # content_type='audio/flac',
+            timestamps=True,
+            word_alternatives_threshold=0.9,
+            keywords=['colorado', 'tornado', 'tornadoes'],
+            keywords_threshold=0.5).get_result()
+    print(json.dumps(speech_recognition_results, indent=2))    
+    transcript = ""
+    try:
+        transcript = speech_recognition_results["results"][0]["alternatives"][0]["transcript"]
+    except Exception as e:
+        print(e)
+    return transcript
+
+
+def identify_language(text):
+    response = language_translator.identify(text).get_result()
+    print(json.dumps(response, indent=2))
+    language = "en"
+    try:
+        confidence = 0.0
+        for l in response["languages"]:
+            c = float(l["confidence"])
+            if c > confidence:
+                language = l["language"]
+
+    except Exception as e:
+        print(e)
+    return language
 
 
 # Simple echo function for tests
@@ -85,6 +129,14 @@ def kiwi_answer(bot):
                 print("Received a voice note! Speech to text in progress...")
                 voice_note = bot.get_file(update.message.voice.file_id)
                 voice_file = voice_note.download()
+                transcript = stt(voice_file)
+                os.remove(voice_file)
+                if transcript != "" and transcript is not None:
+                    if (info["stt"] is False):                        
+                        update.message.text = transcript
+                    else:
+                        lang = identify_language(transcript)
+                        update.message.reply_text("Lingua: " + lang + "\nHo capito:\n" + transcript)
 
             # Check if the user sent a picture
             if len(update.message.photo) > 0:
@@ -93,6 +145,7 @@ def kiwi_answer(bot):
                 pic_file = picture.download()                    
                 # Send Watson answer in Telegram chat
                 update.message.reply_text((json.dumps(vrec(pic_file), indent=2)))
+                os.remove(pic_file)
         
             # Check if the user sent text
             if update.message.text is not None:
@@ -128,7 +181,7 @@ def kiwi_answer(bot):
                     try:
                         pic = response["output"]["generic"][1]["source"]
                         bot.send_photo(chat_id=update.message.chat_id, photo=pic)
-                    except Exception(e):
+                    except Exception as e:
                         print(e)
 
 

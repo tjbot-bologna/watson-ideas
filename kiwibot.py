@@ -10,19 +10,26 @@ from telegram.error import NetworkError, Unauthorized
 # Import Watson libraries
 import json
 from watson_developer_cloud import AssistantV1
+from watson_developer_cloud import VisualRecognitionV3
 
 
+# Define global variables
 update_id = None
 context = None
+
+# Instance Watson resources objects
 assistant = AssistantV1(
     iam_apikey="esXISM3aWlgM5HORbmxtKnQnG6_I-fTM3wFa2rLHYBL9",
-    ## url is optional, and defaults to the URL below. Use the correct URL for your region.
     url="https://gateway.watsonplatform.net/assistant/api",
     version="2018-07-10")
 
+visual_recognition = VisualRecognitionV3(
+    "2018-03-19",
+    iam_apikey="UDDvweJSDR32NAZIfyxZ-dlvjIZ8dfRv75Z93xyjWGEX")
 
+
+# Simple echo function for tests
 def echo(bot):
-    """Echo the message the user sent."""
     global update_id
     # Request updates after the last update_id
     for update in bot.get_updates(offset=update_id, timeout=10):
@@ -33,6 +40,7 @@ def echo(bot):
             update.message.reply_text(update.message.text)
 
 
+# Main function to handle incoming messages
 def converse(bot):
     global update_id, context
     # Request updates after the last update_id
@@ -40,35 +48,52 @@ def converse(bot):
         update_id = update.update_id + 1
 
         if update.message:  # your bot can receive updates without messages
-            # Reply to the message
+            # Reply to the message:
 
-            # Send text to watson assistant workspace (or skill) and get a response
-            response = assistant.message(
-                workspace_id="85e09b72-06f2-434d-9f2e-c2897ec4a611",
-                input={
-                    "text": update.message.text
-                },
-                context=context).get_result()
-            print(json.dumps(response, indent=2))
+            # Check if the user sent a picture
+            if len(update.message.photo) > 0:
+                picture = bot.get_file(update.message.photo[-1].file_id)
+                pic_file = picture.download()
 
-            # Update conversation context
-            context = response["context"]
+                # Send image to your Watson visual recognition resource
+                with open(pic_file, 'rb') as image:
+                    classes = visual_recognition.classify(
+                        image,
+                        threshold='0.6').get_result()
+                    print(json.dumps(classes, indent=2))
 
-            # Make the bot reply in the Telegram chat using the Watson response
-            # This is for text answers, which might be multiple
-            for t in response["output"]["text"]:
-                update.message.reply_text(t)
+                    # Send Watson answer in Telegram chat
+                    update.message.reply_text(json.dumps(classes, indent=2))
+        
+            # Check if the user sent text
+            if update.message.text is not None:
+                # Send text to watson assistant workspace (or skill) and get a response
+                response = assistant.message(
+                    workspace_id="85e09b72-06f2-434d-9f2e-c2897ec4a611",
+                    input={
+                        "text": update.message.text
+                    },
+                    context=context).get_result()
+                print(json.dumps(response, indent=2))
 
-            # This is for pictures link the response might contain
-            if (len(response["output"]["generic"]) > 1):
-                try:
-                    pic = response["output"]["generic"][1]["source"]
-                    bot.send_photo(chat_id=update.message.chat_id, photo=pic)
-                except Exception(e):
-                    print(e)
+                # Update conversation context
+                context = response["context"]
+
+                # Make the bot reply in the Telegram chat using the Watson response:
+                # This is for text answers, which might be multiple
+                for t in response["output"]["text"]:
+                    update.message.reply_text(t)
+
+                # This is for pictures link the response might contain
+                if (len(response["output"]["generic"]) > 1):
+                    try:
+                        pic = response["output"]["generic"][1]["source"]
+                        bot.send_photo(chat_id=update.message.chat_id, photo=pic)
+                    except Exception(e):
+                        print(e)
 
 
-# Run the bot.
+# Main bot behaviour
 def main():
     global update_id
 
@@ -95,6 +120,6 @@ def main():
             update_id += 1
 
 
-if __name__ == '__main__':
-    print("Bot running at https://telegram.me/sprintingkiwibot")
-    main()
+# Run the bot
+print("Bot running at https://telegram.me/sprintingkiwibot")
+main()

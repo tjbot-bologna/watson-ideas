@@ -135,8 +135,7 @@ def kiwi_answer(bot):
                     if (info["stt"] is False):                        
                         update.message.text = transcript
                     else:
-                        lang = identify_language(transcript)
-                        update.message.reply_text("Lingua: " + lang + "\nHo capito:\n" + transcript)
+                        update.message.reply_text("Ho capito:\n" + transcript)
 
             # Check if the user sent a picture
             if len(update.message.photo) > 0:
@@ -165,13 +164,18 @@ def kiwi_answer(bot):
                         update.message.reply_text("WARNING: Watson conversation can have only one tag command per answer")
                         return
                     elif elements > 1 and  elements < 3:
+                        t = parsed_text[0]
                         tag = parsed_text[1]
                         # Execute tag commands:
                         if tag == "STT_START":
                             info["stt"] = True
                         elif tag == "STT_STOP":
                             info["stt"] = False
-                        t = parsed_text[0]
+                        elif tag == "IDENTIFY_LANGUAGE":
+                            update.message.reply_text(identify_language(t))
+                            return
+                        else:
+                            update.message.reply_text("WARNING: unknown tag command")
 
                     # Post text in Telegram chat
                     update.message.reply_text(t)

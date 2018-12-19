@@ -53,6 +53,7 @@ def converse(text):
     print(json.dumps(response, indent=2))
     # Update conversation context
     info["context"] = response["context"]
+
     return response
 
 
@@ -64,6 +65,7 @@ def vrec(pic_file):
             image,
             threshold='0.6').get_result()
         print(json.dumps(classes, indent=2))
+
         return classes
 
 
@@ -77,18 +79,42 @@ def stt(audio):
             word_alternatives_threshold=0.9,
             keywords=['colorado', 'tornado', 'tornadoes'],
             keywords_threshold=0.5).get_result()
-    print(json.dumps(speech_recognition_results, indent=2))    
+    print(json.dumps(speech_recognition_results, indent=2))  
+
     transcript = ""
     try:
         transcript = speech_recognition_results["results"][0]["alternatives"][0]["transcript"]
     except Exception as e:
         print(e)
+
     return transcript
+
+
+def translate(text, target, source="default"):
+    if source == "default":
+        source = identify_language(text)
+    if source != "en":
+        text = translate(text, "en", source)
+
+    response = language_translator.translate(
+    text=text,
+    source=source,
+    target=target).get_result()
+    print(json.dumps(response, indent=2, ensure_ascii=False))
+
+    translation = ""
+    try:
+        translation = response[0]["translation"]
+    except Exception as e:
+        print(e)
+
+    return translation
 
 
 def identify_language(text):
     response = language_translator.identify(text).get_result()
     print(json.dumps(response, indent=2))
+
     language = "en"
     try:
         confidence = 0.0
@@ -96,9 +122,9 @@ def identify_language(text):
             c = float(l["confidence"])
             if c > confidence:
                 language = l["language"]
-
     except Exception as e:
         print(e)
+
     return language
 
 

@@ -71,14 +71,13 @@ def vrec(pic_file):
 
 # Speech to text service function
 def stt(audio):
+    speech_recognition_results = ""
     with open(audio, 'rb') as audio_file:
         speech_recognition_results = speech_to_text.recognize(
             audio=audio_file,
-            # content_type='audio/flac',
-            timestamps=True,
-            word_alternatives_threshold=0.9,
-            keywords=['colorado', 'tornado', 'tornadoes'],
-            keywords_threshold=0.5).get_result()
+            content_type="audio/ogg"
+            ).get_result()
+            
     print(json.dumps(speech_recognition_results, indent=2))  
 
     transcript = ""
@@ -197,14 +196,18 @@ def kiwi_answer(bot):
                             info["stt"] = True
                         elif tag == "STT_STOP":
                             info["stt"] = False
-                        elif tag == "IDENTIFY_LANGUAGE":
-                            update.message.reply_text(identify_language(t))
-                            return
+                        # elif tag == "IDENTIFY_LANGUAGE":
+                        #     update.message.reply_text(identify_language(t))
+                        #     return
                         else:
                             update.message.reply_text("WARNING: unknown tag command")
 
                     # Post text in Telegram chat
-                    update.message.reply_text(t)
+                    if info["stt"] is False:
+                        update.message.reply_text(t)
+                    else:
+                        update.message.reply_text("Modalità analisi messaggio attiva")
+                        pass
 
                 # This is for pictures link the response might contain
                 if (len(response["output"]["generic"]) > 1):

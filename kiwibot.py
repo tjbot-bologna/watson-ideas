@@ -2,6 +2,7 @@
 
 from time import sleep
 import os
+import json
 
 # Import Telegram libraries
 import logging
@@ -9,11 +10,12 @@ import telegram
 from telegram.error import NetworkError, Unauthorized
 
 # Import Watson libraries
-import json
 from watson_developer_cloud import AssistantV1
 from watson_developer_cloud import VisualRecognitionV3
 from watson_developer_cloud import SpeechToTextV1
 from watson_developer_cloud import LanguageTranslatorV3
+from watson_developer_cloud import NaturalLanguageUnderstandingV1
+from watson_developer_cloud.natural_language_understanding_v1 import Features, EntitiesOptions, KeywordsOptions
 
 # Define global variables
 update_id = None
@@ -37,85 +39,89 @@ speech_to_text = SpeechToTextV1(
     url="https://gateway-lon.watsonplatform.net/speech-to-text/api")
 
 language_translator = LanguageTranslatorV3(
-version="2018-05-01",
-iam_apikey="aWORISQg1cm1P6bkcm_YraJEIo9r-mBl1hnVrSiamcN-",
-url="https://gateway.watsonplatform.net/language-translator/api")
+    version="2018-05-01",
+    iam_apikey="aWORISQg1cm1P6bkcm_YraJEIo9r-mBl1hnVrSiamcN-",
+    url="https://gateway.watsonplatform.net/language-translator/api")
+
+naturalLanguageUnderstanding = NaturalLanguageUnderstandingV1(
+    version="2018-11-16",
+    iam_apikey="M2LbjCau1hh5A-yrj8m0BVbUm-ptmBdaU0oX6G74OfZA",
+    url="https://gateway-lon.watsonplatform.net/natural-language-understanding/api")
 
 
 # Watson assistant service function
 def converse(text):
-    response = assistant.message(
-        workspace_id="85e09b72-06f2-434d-9f2e-c2897ec4a611",
-        input={
-            "text": text
-        },
-        context=info["context"]).get_result()
-    print(json.dumps(response, indent=2))
-    # Update conversation context
-    info["context"] = response["context"]
-
+    response = ""
+    try:
+        response = assistant.message(
+            workspace_id="85e09b72-06f2-434d-9f2e-c2897ec4a611",
+            input={
+                "text": text
+            },
+            context=info["context"]).get_result()
+        print(json.dumps(response, indent=2))
+        # Update conversation context
+        info["context"] = response["context"]
+    except Exception as e:
+        print(e)
     return response
 
 
 # Visual recognition service function
 def vrec(pic_file):
-    # Send image to your Watson visual recognition resource
-    with open(pic_file, 'rb') as image:
-        classes = visual_recognition.classify(
-            image,
-            threshold='0.6').get_result()
-        print(json.dumps(classes, indent=2))
-
-        return classes
-
+    classes = ""
+    try:
+        # Send image to your Watson visual recognition resource
+        with open(pic_file, 'rb') as image:
+            classes = visual_recognition.classify(
+                image,
+                threshold='0.6').get_result()
+            print(json.dumps(classes, indent=2))
+    except Exception as e:
+        print(e)
+    return classes
 
 # Speech to text service function
 def stt(audio):
-    speech_recognition_results = ""
-    with open(audio, 'rb') as audio_file:
-        speech_recognition_results = speech_to_text.recognize(
-            audio=audio_file,
-            content_type="audio/ogg"
-            ).get_result()
-            
-    print(json.dumps(speech_recognition_results, indent=2))  
-
     transcript = ""
     try:
-        transcript = speech_recognition_results["results"][0]["alternatives"][0]["transcript"]
+        speech_recognition_results = ""
+        with open(audio, 'rb') as audio_file:
+            speech_recognition_results = speech_to_text.recognize(
+                audio=audio_file,
+                content_type="audio/ogg"
+                ).get_result()            
+        print(json.dumps(speech_recognition_results, indent=2))
+        transcript = speech_recognition_results["results"][0]["alternatives"][0]["transcript"]  
     except Exception as e:
         print(e)
-
     return transcript
 
 
 def translate(text, target, source="default"):
-    if source == "default":
-        source = identify_language(text)
-    if source != "en":
-        text = translate(text, "en", source)
-
-    response = language_translator.translate(
-    text=text,
-    source=source,
-    target=target).get_result()
-    print(json.dumps(response, indent=2, ensure_ascii=False))
-
     translation = ""
     try:
+        if source == "default":
+            source = identify_language(text)
+        if source != "en":
+            text = translate(text, "en", source)
+
+        response = language_translator.translate(
+        text=text,
+        source=source,
+        target=target).get_result()
+        print(json.dumps(response, indent=2, ensure_ascii=False))        
         translation = response[0]["translation"]
     except Exception as e:
         print(e)
-
     return translation
 
 
 def identify_language(text):
-    response = language_translator.identify(text).get_result()
-    print(json.dumps(response, indent=2))
-
     language = "en"
     try:
+        response = language_translator.identify(text).get_result()
+        print(json.dumps(response, indent=2))
         confidence = 0.0
         for l in response["languages"]:
             c = float(l["confidence"])
@@ -123,8 +129,22 @@ def identify_language(text):
                 language = l["language"]
     except Exception as e:
         print(e)
-
     return language
+
+
+def understand(text):
+    response = ""
+    try:
+        response = naturalLanguageUnderstanding.analyze(
+        text=text,
+        features=Features(
+            entities=EntitiesOptions(emotion=True, sentiment=True, limit=2),
+            keywords=KeywordsOptions(emotion=True, sentiment=True,
+                                    limit=2))).get_result()
+        print(json.dumps(response, indent=2))
+    except Exception as e:
+        print(e)
+    return response
 
 
 # Simple echo function for tests
@@ -196,9 +216,6 @@ def kiwi_answer(bot):
                             info["stt"] = True
                         elif tag == "STT_STOP":
                             info["stt"] = False
-                        # elif tag == "IDENTIFY_LANGUAGE":
-                        #     update.message.reply_text(identify_language(t))
-                        #     return
                         else:
                             update.message.reply_text("WARNING: unknown tag command")
 
@@ -207,7 +224,7 @@ def kiwi_answer(bot):
                         update.message.reply_text(t)
                     else:
                         update.message.reply_text("Modalità analisi messaggio attiva")
-                        pass
+                        update.message.reply_text((json.dumps(understand(update.message.text), indent=2)))
 
                 # This is for pictures link the response might contain
                 if (len(response["output"]["generic"]) > 1):

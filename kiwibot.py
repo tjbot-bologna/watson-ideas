@@ -21,7 +21,7 @@ from watson_developer_cloud.natural_language_understanding_v1 import Features, E
 update_id = None
 info = {}
 info["context"] = None
-info["stt"] = False
+info["analysis"] = False
 info["lang"] = "it"
 
 # Instance Watson resources objects
@@ -54,7 +54,7 @@ def converse(text):
     response = ""
     try:
         response = assistant.message(
-            workspace_id="85e09b72-06f2-434d-9f2e-c2897ec4a611",
+            workspace_id="430aef99-9bd3-404c-9a77-b695107c5149",
             input={
                 "text": text
             },
@@ -177,7 +177,7 @@ def kiwi_answer(bot):
                 transcript = stt(voice_file)
                 os.remove(voice_file)
                 if transcript != "" and transcript is not None:
-                    if (info["stt"] is False):                        
+                    if (info["analysis"] is False):                        
                         update.message.text = transcript
                     else:
                         update.message.reply_text("Ho capito:\n" + transcript)
@@ -212,15 +212,15 @@ def kiwi_answer(bot):
                         t = parsed_text[0]
                         tag = parsed_text[1]
                         # Execute tag commands:
-                        if tag == "STT_START":
-                            info["stt"] = True
-                        elif tag == "STT_STOP":
-                            info["stt"] = False
+                        if tag == "ANALYSIS_START":
+                            info["analysis"] = True
+                        elif tag == "ANALYSIS_STOP":
+                            info["analysis"] = False
                         else:
                             update.message.reply_text("WARNING: unknown tag command")
 
                     # Post text in Telegram chat
-                    if info["stt"] is False:
+                    if info["analysis"] is False:
                         update.message.reply_text(t)
                     else:
                         update.message.reply_text("Modalità analisi messaggio attiva")

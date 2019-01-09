@@ -14,6 +14,7 @@ from watson_developer_cloud import VisualRecognitionV3
 
 # Define global variables
 update_id = None
+active_class = ""
 
 # Instance Watson resources objects
 visual_recognition = VisualRecognitionV3(
@@ -22,14 +23,7 @@ visual_recognition = VisualRecognitionV3(
 
 
 classifiers = visual_recognition.list_classifiers(verbose=True).get_result()
-print(json.dumps(classifiers, indent=2))
-
-try:
-    for c in classifiers["classifiers"]:
-        if c["name"] == "telegram_image_learner":
-            print("Found Telegram Image Learner classifier")
-        else:
-            
+print(json.dumps(classifiers, indent=2))           
 
 
 # Visual recognition service function
@@ -57,13 +51,25 @@ def bot_answer(bot):
         if update.message:  # your bot can receive updates without messages
             # Reply to the message:
 
+            # Check if the user sent text
+            if update.message.text is not None:
+                active_class = update.message.text
+
             # Check if the user sent a picture
             if len(update.message.photo) > 0:
-                print("Received a Picture! Visual recognition in progress...")
                 picture = bot.get_file(update.message.photo[-1].file_id)
-                pic_file = picture.download()                    
-                # Send Watson answer in Telegram chat
-                update.message.reply_text((json.dumps(vrec(pic_file), indent=2)))
+                pic_file = picture.download()
+
+                if (update.message.text == "/recognize"):
+                    update.message.reply_text((json.dumps(vrec(pic_file), indent=2)))
+                else:
+                    with open(pic_file, 'rb') as new_pic:
+                        parameters = {}
+                        parameters["classifier_id"] = 'dogs_1477088859'
+                        parameters[active_class+"_examples"] = new_pic
+                        updated_model = visual_recognition.update_classifier(parameters).get_result()
+                        print(json.dumps(updated_model, indent=2))
+
                 os.remove(pic_file)
 
 

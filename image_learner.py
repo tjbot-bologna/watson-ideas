@@ -15,6 +15,7 @@ from watson_developer_cloud import VisualRecognitionV3
 # Define global variables
 update_id = None
 active_class = ""
+behaviour = "recognize"
 
 # Instance Watson resources objects
 visual_recognition = VisualRecognitionV3(
@@ -43,7 +44,7 @@ def vrec(pic_file):
 
 # Function to handle incoming messages
 def bot_answer(bot):
-    global update_id
+    global update_id, behaviour, active_class
     # Request updates after the last update_id
     for update in bot.get_updates(offset=update_id, timeout=10):
         update_id = update.update_id + 1
@@ -53,14 +54,21 @@ def bot_answer(bot):
 
             # Check if the user sent text
             if update.message.text is not None:
-                active_class = update.message.text
+                if update.message.text == "/recognize":
+                    behaviour = "recognize"
+                    update.message.reply_text("Recognize mode")
+                elif update.message.text == "/learn":
+                    behaviour = "learn"
+                    update.message.reply_text("Learn mode, active class: " + active_class)
+                elif behaviour == "learn":
+                    active_class = update.message.text
 
             # Check if the user sent a picture
             if len(update.message.photo) > 0:
                 picture = bot.get_file(update.message.photo[-1].file_id)
                 pic_file = picture.download()
 
-                if (update.message.text == "/recognize"):
+                if behaviour == "recognize":
                     update.message.reply_text((json.dumps(vrec(pic_file), indent=2)))
                 else:
                     with open(pic_file, 'rb') as new_pic:
@@ -68,7 +76,7 @@ def bot_answer(bot):
                         parameters["classifier_id"] = 'dogs_1477088859'
                         parameters[active_class+"_examples"] = new_pic
                         updated_model = visual_recognition.update_classifier(parameters).get_result()
-                        print(json.dumps(updated_model, indent=2))
+                        update.message.reply_text(json.dumps(updated_model, indent=2))
 
                 os.remove(pic_file)
 

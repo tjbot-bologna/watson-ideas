@@ -57,7 +57,8 @@ bot.on('text', message => {
 
 bot.on('photo', ({message, replyWithPhoto}) => {
     replyWithPhoto(message.photo.pop().file_id, {caption:'Your caption here'})
-    return message.reply('A picture!');
+    bot.getFile(message.photo.pop().file_id);
+    // return message.reply('A picture!');
 
 });
 

@@ -6,9 +6,7 @@ context = None
 user_input = ""
 
 assistant = AssistantV1(
-    username="e7c46313-e382-40f4-a77c-67f9e5cc15ea",
-    password="1XaNGI6RwkOM",
-    ## url is optional, and defaults to the URL below. Use the correct URL for your region.
+    iam_apikey="esXISM3aWlgM5HORbmxtKnQnG6_I-fTM3wFa2rLHYBL9",
     url="https://gateway.watsonplatform.net/assistant/api",
     version="2018-07-10")
 
@@ -16,7 +14,7 @@ while True:
     user_input = input()
 
     response = assistant.message(
-        workspace_id="4208099e-d443-405d-bba7-11c3d9f2c620",
+        workspace_id="cb3034c7-dacf-4347-b292-2ba55fcb539d",
         input={
             "text": user_input
         },
@@ -26,4 +24,4 @@ while True:
 
     # print(json.dumps(response, indent=2))
     for t in response["output"]["text"]:
-        print(t + "\n")
+        print(t)
